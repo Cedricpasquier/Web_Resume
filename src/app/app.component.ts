@@ -13,13 +13,17 @@ export class AppComponent {
   lang = ['FR','EN'];
   lang_to_set = 1;
   menu_ids =  ['home', 'about', 'service', 'work', 'blog'];
+  skills: any;
 
-  constructor(public translateService: TranslateService, @Inject(DOCUMENT) private document: Document) {
+  constructor(public translateService: TranslateService, @Inject(DOCUMENT) private document: Document, public webResumeService: WebResumeService) {
     translateService.addLangs(['en', 'fr']);
     translateService.setDefaultLang('fr');
   }
 
   ngOnInit() {
+    this.webResumeService.getSkills().subscribe(res=> {
+      this.skills = res;
+    });
   }
 
   setLang(): void {

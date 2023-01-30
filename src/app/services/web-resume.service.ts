@@ -14,9 +14,8 @@ export class WebResumeService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getMenuIds() {
-    const apiAddress = environment.API_URL + `en/menu.json`;
-    const menuIds = this.httpClient.get(apiAddress, { headers: this.contentHeader })
-    return menuIds;
+  getSkills(): Observable<any> {
+    const apiAddress = environment.API_URL + `skills.json`;
+    return this.httpClient.get(apiAddress, { headers: this.contentHeader })
   }
 }
