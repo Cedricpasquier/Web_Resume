@@ -44,12 +44,6 @@ export class AppComponent {
       document.getElementById('mainNav')?.classList.remove('navbar-reduce');
     }
   }
-
-  reduceMenuTrigger() {
-    if(! document.getElementById('mainNav')?.classList.contains('navbar-reduce')){
-      document.getElementById('mainNav')?.classList.add('navbar-reduce')
-    }
-  }
 }
 
 import { Pipe, PipeTransform } from '@angular/core';
@@ -58,5 +52,11 @@ import { DOCUMENT } from '@angular/common';
   export class AddUnderscorePipe implements PipeTransform {
     transform(value: any, args?: any): any {
       return value.replace(" ","_");
+    }
+  }
+  @Pipe({ name: 'transformIntro' })
+  export class TransformIntro implements PipeTransform {
+    transform(value: any, args?: any): any {
+      return value.split('  ');
     }
   }

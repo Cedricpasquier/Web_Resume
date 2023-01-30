@@ -59,7 +59,7 @@ a:hover {
 .service-box,
 .work-box,
 .card-blog {
-  box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0);
 }
 
 .box-shadow-a,
@@ -489,7 +489,7 @@ a:hover {
 }
 
 .navbar-b.navbar-reduce .nav-link:before {
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .navbar-b.navbar-reduce .nav-link:hover {
@@ -507,9 +507,6 @@ a:hover {
   color: #ffffff;
 }
 
-.navbar-b.navbar-reduce .navbar-toggler span {
-  background-color: #ffffff;
-}
 
 .navbar-b .navbar-brand {
   color: #fff;
@@ -547,11 +544,11 @@ a:hover {
 
 /*--/ Hamburger Navbar /--*/
 
-.navbar-toggler {
-  position: relative;
-}
+/* .navbar-toggler {
+  color: white;
+} */
 
-.navbar-toggler:focus,
+/* .navbar-toggler:focus,
 .navbar-toggler:active {
   outline: 0;
 }
@@ -598,7 +595,7 @@ a:hover {
   -webkit-transform: rotate(-135deg);
   transform: rotate(-135deg);
   opacity: 0.9;
-}
+} */
 
 /*======================================
 //--//-->   INTRO
@@ -623,7 +620,7 @@ a:hover {
   padding: 0;
   height: 100%;
   width: 100%;
-  opacity: .9;
+  opacity: .6;
 }
 
 .intro .intro-title {
@@ -1179,6 +1176,10 @@ footer .credits a {
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: .3rem;
+}
+
+.langbtn {
+  cursor: pointer;
 }
 
 @media (min-width: 577px) {
