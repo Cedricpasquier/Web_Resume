@@ -736,6 +736,12 @@ a:hover {
   padding: .4rem 0;
 }
 
+.ss-title {
+  font-size: 1.3rem;
+  text-align: center;
+  padding: .4rem 0;
+}
+
 .service-box .s-description {
   color: #4e4e4e;
 }

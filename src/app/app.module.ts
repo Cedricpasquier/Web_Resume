@@ -2,21 +2,28 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CustomTranslateLoader } from 'src/app/services/trans-loader';
-import { AppComponent, AddUnderscorePipe, TransformIntro } from './app.component';
+import { AppComponent, AddUnderscorePipe, TransformIntro, TruncatePipe, DialogWork } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularTypewriterEffectModule } from 'angular-typewriter-effect';
+import { IonicModule } from '@ionic/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AddUnderscorePipe,
-    TransformIntro
+    TransformIntro,
+    TruncatePipe,
+    DialogWork
+
   ],
   imports: [
     BrowserModule,
     AngularTypewriterEffectModule,
     HttpClientModule,
+    MatDialogModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -24,10 +31,12 @@ import { AngularTypewriterEffectModule } from 'angular-typewriter-effect';
         deps: [HttpClient]
       }
     }),
+    IonicModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [TransformIntro],
   bootstrap: [AppComponent],
-  exports: [TranslateModule]
+  exports: [TranslateModule, TransformIntro]
 })
 export class AppModule { }
 
