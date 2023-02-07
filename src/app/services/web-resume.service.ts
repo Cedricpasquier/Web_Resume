@@ -18,4 +18,9 @@ export class WebResumeService {
     const apiAddress = environment.API_URL + `skills.json`;
     return this.httpClient.get(apiAddress, { headers: this.contentHeader })
   }
+
+  getImages(): Observable<any> {
+    const apiAddress = environment.API_URL + `pictures.json`;
+    return this.httpClient.get(apiAddress, { headers: this.contentHeader })
+  }
 }

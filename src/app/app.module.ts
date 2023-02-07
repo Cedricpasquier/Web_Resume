@@ -8,7 +8,7 @@ import { AngularTypewriterEffectModule } from 'angular-typewriter-effect';
 import { IonicModule } from '@ionic/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -17,13 +17,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     TransformIntro,
     TruncatePipe,
     DialogWork
-
   ],
   imports: [
     BrowserModule,
     AngularTypewriterEffectModule,
     HttpClientModule,
     MatDialogModule,
+    MatCardModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -14,6 +14,7 @@ export class AppComponent {
   lang_to_set = 1;
   menu_ids = ['home', 'about', 'service', 'work', 'blog'];
   skills: any;
+  images: any;
 
   constructor(
     public translateService: TranslateService,
@@ -29,6 +30,9 @@ export class AppComponent {
   ngOnInit() {
     this.webResumeService.getSkills().subscribe((res) => {
       this.skills = res;
+    });
+    this.webResumeService.getImages().subscribe((res) => {
+      this.images = res;
     });
   }
 
