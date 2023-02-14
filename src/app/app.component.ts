@@ -3,6 +3,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { WebResumeService } from './services/web-resume.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+
+export interface RedirectionExtras extends NavigationExtras {
+  target?: string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,16 +16,17 @@ export class AppComponent {
   title = 'WebResume';
   lang = ['FR', 'EN'];
   lang_to_set = 1;
-  menu_ids = ['home', 'about', 'service', 'work', 'blog'];
   skills: any;
   images: any;
+  dialog_open: boolean = false;
 
   constructor(
     public translateService: TranslateService,
     public dialog: MatDialog,
     @Inject(DOCUMENT) private document: Document,
     public webResumeService: WebResumeService,
-    public transformIntro: TransformIntro
+    public transformIntro: TransformIntro,
+    private router: Router
   ) {
     translateService.addLangs(['en', 'fr']);
     translateService.setDefaultLang('fr');
@@ -50,7 +55,8 @@ export class AppComponent {
   onWindowScroll() {
     if (
       document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
+      document.documentElement.scrollTop > 20 ||
+      this.dialog.openDialogs.length
     ) {
       document.getElementById('mainNav')?.classList.add('navbar-reduce');
       document.getElementById('mainNav')?.classList.remove('navbar-trans');
@@ -61,6 +67,7 @@ export class AppComponent {
   }
 
   openDialog(data: any) {
+    this.dialog_open = !this.dialog_open;
     this.dialog.open(DialogWork, {
       data: {
         work: 'work.'+ data
@@ -94,6 +101,7 @@ export class TruncatePipe implements PipeTransform {
 }
 
 import { NgModule } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'dialog-work',

@@ -152,7 +152,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row justify-content-md-center">
         <div class="col-md-4 d-flex align-items-stretch" *ngFor="let work of ( 'work' | translate ); let i = index">
           <div class="service-box" (click)="openDialog(i)">
             <div class="service-ico">
@@ -176,49 +176,18 @@
   <div id="education" class="section-counter paralax-mf bg-image" [ngStyle]="{ 'background-image': 'url(' + images['img-education'] + ')'}">
     <div class="overlay-mf"></div>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-3 col-lg-3">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div class="row justify-content-center row-cols-auto">
+        <div class="col d-flex align-items-stretch" *ngFor="let education of ( 'education' | translate )">
+          <div class="card my-2" style="width: 18rem;">
+            <img mat-card-sm-image style="height: 8rem;" class="img_education" [src]="education.picture" >
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ education.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ education.school }}</h6>
+              <p class="card-text mt-auto">{{ education.location }}</p>
+              <a [href]="education.link" target="_blank" class="stretched-link"></a>
             </div>
           </div>
         </div>
-        <!-- <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
-            </div>
-            <div class="counter-num">
-              <p class="counter">15</p>
-              <span class="counter-text">YEARS OF EXPERIENCE</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="ion-ios-people"></i></span>
-            </div>
-            <div class="counter-num">
-              <p class="counter">550</p>
-              <span class="counter-text">TOTAL CLIENTS</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
-            </div>
-            <div class="counter-num">
-              <p class="counter">36</p>
-              <span class="counter-text">AWARD WON</span>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -345,7 +314,7 @@
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
-                    <h2 class="w-title">Studio Lena Mado</h2>
+                    <h2 class="w-title">Studio Lena Mado</h2>w
                     <div class="w-more">
                       <span class="w-ctegory">Web Design</span> / <span class="w-date">18 Sep. 2018</span>
                     </div>

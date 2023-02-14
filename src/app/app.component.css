@@ -18,6 +18,15 @@ body {
   margin-top: 3rem;
 }
 
+.example-card {
+  max-width: 400px;
+  margin-bottom: 8px;
+}
+
+.img_education {
+  object-fit: cover;
+}
+
 h1,
 h2,
 h3,
