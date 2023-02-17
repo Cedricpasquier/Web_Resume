@@ -690,10 +690,6 @@ a:hover {
   margin-bottom: 2rem;
 }
 
-.about-mf .about-img img {
-  margin-left: 10px;
-}
-
 .skill-mf span {
   color: #4e4e4e;
 }
@@ -798,6 +794,7 @@ a:hover {
 
 .work-img {
   display: block;
+  height: 18rem;
   overflow: hidden;
 }
 
