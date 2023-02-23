@@ -20,6 +20,13 @@ export class AppComponent {
   images: any;
   dialog_open: boolean = false;
 
+  messageForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.min(4)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    subject: new FormControl('', [Validators.required, Validators.min(4)]),
+    message: new FormControl('', [Validators.required])
+  })
+
   constructor(
     public translateService: TranslateService,
     public dialog: MatDialog,
@@ -102,6 +109,7 @@ export class TruncatePipe implements PipeTransform {
 
 import { NgModule } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Route, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dialog-work',

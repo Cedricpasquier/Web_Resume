@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {MatCardModule} from '@angular/material/card';
       }
     }),
     IonicModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [TransformIntro],
   bootstrap: [AppComponent],
