@@ -1,8 +1,8 @@
-import { Component, HostListener, Inject } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { WebResumeService } from './services/web-resume.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 export interface RedirectionExtras extends NavigationExtras {
   target?: string;
@@ -12,20 +12,35 @@ export interface RedirectionExtras extends NavigationExtras {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'WebResume';
   lang = ['FR', 'EN'];
   lang_to_set = 1;
   skills: any;
   images: any;
   dialog_open: boolean = false;
+  messageForm!: FormGroup;
 
-  messageForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.min(4)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    subject: new FormControl('', [Validators.required, Validators.min(4)]),
-    message: new FormControl('', [Validators.required])
-  })
+
+  ngOnInit() {
+    this.webResumeService.getSkills().subscribe((res) => {
+      this.skills = res;
+    });
+    this.webResumeService.getImages().subscribe((res) => {
+      this.images = res;
+    });
+    this.messageForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      subject: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      message: new FormControl('', [Validators.required])
+    })
+  }
+
+  get name() { return this.messageForm.get('name');}
+  get email() { return this.messageForm.get('email');}
+  get subject() { return this.messageForm.get('subject');}
+  get message() { return this.messageForm.get('message');}
 
   constructor(
     public translateService: TranslateService,
@@ -39,14 +54,20 @@ export class AppComponent {
     translateService.setDefaultLang('fr');
   }
 
-  ngOnInit() {
-    this.webResumeService.getSkills().subscribe((res) => {
-      this.skills = res;
-    });
-    this.webResumeService.getImages().subscribe((res) => {
-      this.images = res;
-    });
+  SendEmail(e: Event): void {
+    if(this.messageForm.valid){
+      emailjs.sendForm('service_lrce4qw', 'template_5gyv1w8', e.target as HTMLFormElement, 'user_6l0A1l7CpEmESC2YnwLf7')
+        .then((result: EmailJSResponseStatus) => {
+          console.log(result.text);
+        }, (error) => {
+          console.log(error.text);
+        });
+        this.messageForm.reset();
+    } else {
+      console.log('Form not valid');
+    }
   }
+
 
   setLang(): void {
     if (this.lang_to_set) {

@@ -249,26 +249,25 @@
                     </h5>
                   </div>
                   <div>
-                      <form onsubmit="SendMessage()" role="form" class="contactForm">
+                    <form (submit)="SendEmail($event)" [formGroup]="messageForm">
                       <div id="sendmessage"> {{ 'text.succed_message' | translate }} </div>
                       <div id="errormessage"></div>
-                      <div class="row" formGroupName="messageForm">
+                      <div class="row form-group">
                         <div class="col-md-12 mb-3">
-                          <input type="text" name="name" class="form-control" formControlName="name" id="name" [attr.placeholder]="('text.your_name' | translate)" />
-                          <div class="validation" *ngIf="this.messageForm.errors['name'] || this.messageForm.controls.name.touched">{{ 'text.error_name' | translate }}</div>
+                          <input type="text" class="form-control mb-1" name="user_name" formControlName="name" id="name" [attr.placeholder]="('text.name' | translate)"  required>
+                          <div class="alert alert-danger" *ngIf="!messageForm.controls['name'].valid && messageForm.controls['name']?.touched">{{ 'text.error_name' | translate }}</div>
                         </div>
                         <div class="col-md-12 mb-3">
-                          <input type="email" class="form-control" formControlName="email" name="email" id="email" [attr.placeholder]="('text.email' | translate)" />
-                          <div class="validation" *ngIf="?this.messageForm.errors['email'] || this.messageForm.controls.email.touched">{{ 'text.error_email' | translate }}</div>
+                          <input type="email" class="form-control mb-1" name="user_email" formControlName="email" id="email" [attr.placeholder]="('text.email' | translate)" required>
+                          <div class="alert alert-danger" *ngIf="!messageForm.controls['email'].valid && messageForm.controls['email']?.touched">{{ 'text.error_email' | translate }}</div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <input type="text" formControlName="subject" class="form-control" name="subject" id="subject" [attr.placeholder]="('text.subject' | translate)"/>
-                            <div class="validation" *ngIf="?this.messageForm.errors['subject'] || this.messageForm.controls.subject.touched">{{ 'text.error_subject' | translate }}</div>
+                            <input type="text" class="form-control mb-1" name="subject" formControlName="subject" id="subject" [attr.placeholder]="('text.subject' | translate)" required>
+                            <div class="alert alert-danger" *ngIf="!messageForm.controls['subject'].valid && messageForm.controls['subject']?.touched">{{ 'text.error_subject' | translate }}</div>
                         </div>
                         <div class="col-md-12 mb-3">
-                          <textarea class="form-control" formControlName="message" name="message" rows="5" [attr.placeholder]="('text.message' | translate)"></textarea>
-                          <div class="validation" *ngIf="?this.messageForm.errors['message'] || this.messageForm.controls.message.touched">{{ 'text.error_message' | translate }}</div>
-                        </div>
+                          <textarea class="form-control mb-1" name="message" formControlName="message" id="message" rows="5" [attr.placeholder]="('text.message' | translate)"></textarea>
+                          <div class="alert alert-danger" *ngIf="!messageForm.controls['message'].valid && messageForm.controls['message']?.touched">{{ 'text.error_message' | translate }}</div></div>
                         <div class="col-md-12">
                           <button type="submit" class="button button-a button-big button-rouded">{{ ('text.send_message' | translate) }}</button>
                         </div>
