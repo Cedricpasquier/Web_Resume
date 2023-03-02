@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   lang_to_set = 1;
   skills: any;
   images: any;
+  images_loaded: boolean = false;
   dialog_open: boolean = false;
   messageForm!: FormGroup;
 
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
     });
     this.webResumeService.getImages().subscribe((res) => {
       this.images = res;
+      this.images_loaded = true;
     });
     this.messageForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(4)]),
