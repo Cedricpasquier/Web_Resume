@@ -1,0 +1,10 @@
+<div class="mw-50">
+  <div mat-dialog-content class="m-4">
+    <h2 class="s-title"><b>{{ (data.work + '.title') | translate }}</b></h2>
+    <h4 class="text-left">{{ 'text.at' | translate }}<b>{{ data.work + '.company' | translate}}</b></h4>
+    <h5>{{ 'text.description' | translate}}</h5>
+    <p class="s-description text-justify" *ngFor="let work of (data.work + '.description' | translate | transformIntro)">
+      {{ work }}
+    </p>
+  </div>
+</div>
