@@ -4,9 +4,11 @@
   <nav class="navbar navbar-b navbar-dark navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container-fluid">
       <a class="navbar-brand" href="#page-top">{{ 'text.appname' | translate }}</a>
-      <div class="justify-content-end display-flex">
-        <a class="nav-link" style="display: inline; padding: 1 rem;" (click)="setLang()">{{ lang[lang_to_set] }}</a>
-        <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="col  lapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="justify-content-end d-flex">
+        <div class="nav-item d-inline mt-2">
+          <a class="nav-link collapse-lang-button" aria-expanded="false" (click)="setLang()">{{ lang[lang_to_set] }}</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>

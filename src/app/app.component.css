@@ -166,9 +166,17 @@ a:hover {
   text-transform: uppercase;
 }
 
+.collapse-lang-button {
+  visibility : hidden;
+}
+
 @media screen and (max-width: 600px){
   .title-a {
     font-size: 2rem;
+  }
+
+  .collapse-lang-button {
+    visibility : visible;
   }
 }
 
